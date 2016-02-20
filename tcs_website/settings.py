@@ -12,8 +12,17 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 
 import os
 
+PROJECT_NAME = 'tcs_website'
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+THIS_DIR = os.path.join(BASE_DIR, PROJECT_NAME)
+SEMANTIC_DIR = os.path.join(BASE_DIR, 'semantic')
+
+# define directories for all apps
+APP_DIR = os.path.join(THIS_DIR, 'apps')
+APP_HOME_DIR = os.path.join(APP_DIR, 'home')
+APP_PORTFOLIO_DIR = os.path.join(APP_DIR, 'portfolio')
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,12 +40,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.home',
+    'apps.portfolio',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.staticfiles'
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -52,10 +64,11 @@ MIDDLEWARE_CLASSES = [
 
 ROOT_URLCONF = 'tcs_website.urls'
 
+GLOBAL_TEMPLATES_BASE_DIR = os.path.join(THIS_DIR, 'templates')
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [GLOBAL_TEMPLATES_BASE_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'ET'
 
 USE_I18N = True
 
@@ -119,3 +132,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(SEMANTIC_DIR, 'dist'),
+    os.path.join(THIS_DIR, 'static'),
+    os.path.join(APP_HOME_DIR, 'static'),
+    os.path.join(APP_PORTFOLIO_DIR, 'static')
+]

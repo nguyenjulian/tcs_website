@@ -1,0 +1,8 @@
+/*******************************
+     User Global Variables
+*******************************/
+
+@red: #750B0E;
+
+@primaryColor: @red;
+@secondaryColor: @orange;
