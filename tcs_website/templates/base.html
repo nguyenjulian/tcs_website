@@ -17,14 +17,19 @@
         <!-- Custom base css -->
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
+        <!-- Custom Javascript -->
+        <script src="{% static 'js/base.js' %}"></script>
+
         {% block resources %}
         {% endblock %}
 	</head>
 
 	<body>
-        <nav class="ui menu header navbar">
+        <!-- Global navbar -->
+            <nav class="ui menu header navbar">
             <a class="brand item" href="/home/">TCSxVT</a>
             <a class="item" href="/portfolio/">Portfolio</a>
+            <a class="item" href="#">Members</a>
             <a class="item" href="#">Join</a>
             <a class="item" href="#">Contact</a>
             <div class="right menu">

@@ -1,7 +1,5 @@
 from django.db import models
 
-from apps.portfolio.models import Project
-
 
 class User(models.Model):
     is_admin = models.BooleanField()
@@ -9,10 +7,13 @@ class User(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     member_since_date = models.DateField()
-    resume = models.FielField()
+    resume = models.FileField()
     email = models.EmailField()
     profile_picture = models.ImageField()
     bio_description = models.TextField()
     linkedin_profile_url = models.URLField()
     github_profile_url = models.URLField()
-    projects = models.ManyToManyField(Project)
+    projects = models.ManyToManyField('portfolio.Project')
+
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
