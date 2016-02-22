@@ -20,8 +20,14 @@ from apps.home import views as home_views
 from apps.portfolio import views as portfolio_views
 
 urlpatterns = [
+    # home urls
     url(r'^$', home_views.index),
     url(r'^home/$', home_views.index),
+
+    # portfolio urls
     url(r'^portfolio/$', portfolio_views.index),
+    url(r'^projects/', portfolio_views.projects),
+
+    # admin urls
     url(r'^admin/', admin.site.urls)
 ]

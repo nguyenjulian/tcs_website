@@ -2,6 +2,8 @@
 
 {% load staticfiles %}
 
+{% load dict_extras %}
+
 {% block resources %}
 <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 {% endblock %}
@@ -24,7 +26,6 @@
                     At TCS, unlike some other consulting groups in Blacksburg, technical skill, relevant experience, and superior problem-solving ability are the standard, <i>not</i> the exception.
                     </br>
                     </br>
-                    
                 </p>
             </div>
 
@@ -38,284 +39,31 @@
     </div>
 </div>
 
-<div class="row padding-reset">
-    <div class="column">
-        <div class="ui center aligned header">
-            Explore what we know
+<div class="ui page grid">
+    <div class="row padding-reset">
+        <!-- This gives nice spacing -->
+    </div>
+
+    <div class="ui sub header">What kind of projects are you interested in?</div>
+    <div id="project-tag-dropdown" class="ui container multiple search normal selection dropdown">
+        <input type="hidden" name="country">
+        <i class="dropdown icon"></i>
+        <div class="default text">Select tags</div>
+        <div class="menu">
+        {% for tag_category in tag_dict %}
+            <div class="ui red header">{{ tag_category }}</div>
+            {% for tag_name in tag_dict|lookup:tag_category %}
+                <a class="item" data-value="{{ tag_name }}">{{ tag_name }}</a>
+            {% endfor %}
+        {% endfor %}
         </div>
     </div>
-</div>
-
-<div class="row padding-reset">
-    <div class="column">
-        <div class="ui secondary pointing menu">
-            <a class="active java-info-btn item">
-                Java
-            </a>
-            <a class="item python-info-btn">
-                Python
-            </a>
-            <a class="item cpp-info-btn">
-                C++
-            </a>
-        </div>
+    <div class="row padding-reset">
+        <a id="filter-projects-btn" class="ui green inverted button">Filter</a>
     </div>
+
 </div>
 
-<div class="row padding-reset">
-    <div class="ui three column centered stackable grid">
-
-        <!-- Testing information shape -->
-        <div class="four wide column">
-            <div class="ui testing-info shape">
-                <div class="sides">
-
-                    <!-- Java testing information -->
-                    <div class="side java-testing active">
-                        <div class="ui card">
-                            <div class="content">
-                                <div class="header">
-                                    Testing - Java
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                <h4 class="ui sub header">Frameworks</h4>
-                                <div class="ui list">
-                                    <div class="item">JUnit</div>
-                                    <div class="item">TestNG</div>
-                                </div>
-
-                                <h4 class="ui sub header">Tools</h4>
-                                <div class="ui list">
-                                    <div class="item">Selenium WebDriver</div>
-                                </div>
-
-                                <h4 class="ui sub header">Continuous Integration</h4>
-                                <div class="ui list">
-                                    <div class="item">Luntbuild</div>
-                                    <div class="item">Jenkins</div>
-                                </div>
-                            </div>            
-                        </div>
-                    </div>
-
-                    <!-- Python testing information -->
-                    <div class="side python-testing">
-                        <div class="ui card">
-                            <div class="content">
-                                <div class="header">
-                                    Testing - Python
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                <h4 class="ui sub header">Frameworks</h4>
-                                <div class="ui list">
-                                    <div class="item">unittest</div>
-                                    <div class="item">mock</div>
-                                </div>
-
-                                <h4 class="ui sub header">Tools</h4>
-                                <div class="ui list">
-                                    <div class="item">Selenium WebDriver</div>
-                                    <div class="item">virtualenv</div>
-                                </div>
-
-                                <h4 class="ui sub header">Continuous Integration</h4>
-                                <div class="ui list">
-                                    <div class="item">Travis CI</div>
-                                    <div class="item">AppVeyor</div>
-                                </div>
-                            </div>            
-                        </div>
-                    </div>
-
-                    <!-- C++ testing information -->
-                    <div class="side cpp-testing">
-                        <div class="ui card">
-                            <div class="content">
-                                <div class="header">
-                                    Testing - C++
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                <h4 class="ui sub header">Frameworks</h4>
-                                <div class="ui list">
-                                    <div class="item">CxxTest</div>
-                                    <div class="item">Google Test</div>
-                                </div>
-
-                                <h4 class="ui sub header">Tools</h4>
-                                <div class="ui list">
-                                    <div class="item">GDB</div>
-                                </div>
-
-                                <h4 class="ui sub header">Continuous Integration</h4>
-                                <div class="ui list">
-                                    <div class="item">None yet!</div>
-                                </div>
-                            </div>            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
-        <!-- Deployment information shape -->
-        <div class="four wide column">
-            <div class="ui deployment-info shape">
-                <div class="sides">
-
-                    <!-- Java deployment information -->
-                    <div class="side java-deployment active">
-                        <div class="ui card">
-                            <div class="content">
-                                <div class="header">
-                                    Deployment - Java
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                <h4 class="ui sub header">Frameworks</h4>
-                                <div class="ui list">
-                                    <div class="item">JBoss</div>
-                                    <div class="item">Apache Tomcat</div>
-                                </div>
-
-                                <h4 class="ui sub header">Tools</h4>
-                                <div class="ui list">
-                                    <div class="item">Still learning!</div>
-                                </div>
-
-                            </div>            
-                        </div>
-                    </div>
-
-                    <!-- Python deployment information -->
-                    <div class="side python-deployment">
-                        <div class="ui card">
-                            <div class="content">
-                                <div class="header">
-                                    Deployment - Python
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                <h4 class="ui sub header">Frameworks</h4>
-                                <div class="ui list">
-                                    <div class="item">Django</div>
-                                    <div class="item">Flask</div>
-                                </div>
-
-                                <h4 class="ui sub header">Tools</h4>
-                                <div class="ui list">
-                                    <div class="item">Fabric</div>
-                                </div>
-
-                                <h4 class="ui sub header">Platforms</h4>
-                                <div class="ui list">
-                                    <div class="item">Python Package Index</div>
-                                    <div class="item">Redhat Openshift</div>
-                                    <div class="item">Heroku</div>
-                                </div>
-                            </div>            
-                        </div>
-                    </div>
-
-                    <!-- C++ deployment information -->
-                    <div class="side cpp-deployment">
-                        <div class="ui card">
-                            <div class="content">
-                                <div class="header">
-                                    Deployment - C++
-                                </div>
-                            </div>
-
-                            <div class="content">
-                                <h4 class="ui sub header">Frameworks</h4>
-                                <div class="ui list">
-                                    <div class="item">Still working on our experience here!</div>
-                                </div>
-
-                                <h4 class="ui sub header">Tools</h4>
-                                <div class="ui list">
-                                    <div class="item">Still working on our experience here!</div>
-                                </div>
-
-                                <h4 class="ui sub header">Containers</h4>
-                                <div class="ui list">
-                                    <div class="item">Still working on our experience here!</div>
-                                </div>
-                            </div>            
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-// set up experience menu
-$('.ui.secondary.pointing.menu')
-    .on('click', '.item', function() {
-        $(this)
-            .addClass('active')
-            .siblings('.item')
-            .removeClass('active');
-    });
-
-var flip_animation = 'flip down';
-
-// rotate to Java info
-$('.java-info-btn')
-    .on('click', function() {
-        $('.testing-info')
-            .shape('set next side', '.java-testing')
-            .shape(flip_animation)
-    });
-$('.java-info-btn')
-    .on('click', function() {
-        $('.deployment-info')
-            .shape('set next side', '.java-deployment')
-            .shape(flip_animation)
-    });
-
-// rotate to Python info
-$('.python-info-btn')
-    .on('click', function() {
-        $('.testing-info')
-            .shape('set next side', '.python-testing')
-            .shape(flip_animation)
-    });
-$('.python-info-btn')
-    .on('click', function() {
-        $('.deployment-info')
-            .shape('set next side', '.python-deployment')
-            .shape(flip_animation)
-    });
-
-// rotate to C++ info
-$('.cpp-info-btn')
-    .on('click', function() {
-        $('.testing-info')
-            .shape('set next side', '.cpp-testing')
-            .shape(flip_animation)
-    });
-$('.cpp-info-btn')
-    .on('click', function() {
-        $('.deployment-info')
-            .shape('set next side', '.cpp-deployment')
-            .shape(flip_animation)
-    });
-
-</script>
+<script src="{% static 'home/js/home.js' %}"></script>
 
 {% endblock %}

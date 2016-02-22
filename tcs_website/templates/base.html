@@ -17,16 +17,13 @@
         <!-- Custom base css -->
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
 
-        <!-- Custom Javascript -->
-        <script src="{% static 'js/base.js' %}"></script>
-
         {% block resources %}
         {% endblock %}
 	</head>
 
 	<body>
         <!-- Global navbar -->
-            <nav class="ui menu header navbar">
+        <nav class="ui menu header navbar">
             <a class="brand item" href="/home/">TCSxVT</a>
             <a class="item" href="/portfolio/">Portfolio</a>
             <a class="item" href="#">Members</a>
@@ -34,7 +31,7 @@
             <a class="item" href="#">Contact</a>
             <div class="right menu">
                 <div class="item">
-                    <a class="ui linkedin labeled icon button">
+                    <a id="linkedin-connect-button" class="ui linkedin labeled icon button">
                         <i class="square linkedin icon"></i>
                         Connect
                     </a>
@@ -46,6 +43,37 @@
         {% block content %}
         {% endblock %}
         </div>
+
+        <!-- Linkedin modal -->
+        <div id="linkedin-connect-modal" class="ui basic modal">
+            <div class="ui one column stackable centered page grid">
+                <div class="ui center aligned column twelve wide">
+                    <div class="image content">
+                        <div class="image">
+                            <i class="huge linkedin icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="column center aligned column twelve wide">
+                    <div class="actions">
+                        <div class="ui huge linkedin blue basic inverted button">
+                            <i class="external icon"></i>
+                                Connect with LinkedIn
+                        </div>
+                    </div>
+                </div>
+                <div class="column center aligned column twelve wide">
+                    <div class="description">
+                        <p>
+                            Not a TCS member? Apply <a href="/join/">here</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Javascript -->
+        <script src="{% static 'js/base.js' %}"></script>
 
 	</body>
 

@@ -1,6 +1,9 @@
+# Python bytecode files
+__pycache__
+*.py[cod]
+
 node_modules
 semantic/dist
 
 db.sqlite3
 
-*.py[co]

@@ -13,7 +13,6 @@ class User(models.Model):
     bio_description = models.TextField()
     linkedin_profile_url = models.URLField()
     github_profile_url = models.URLField()
-    projects = models.ManyToManyField('portfolio.Project')
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name

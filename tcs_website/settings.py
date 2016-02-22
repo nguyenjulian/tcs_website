@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -134,7 +134,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    os.path.join(SEMANTIC_DIR, 'dist'),
+    os.path.join(SEMANTIC_DIR, 'dist'),  # include files built by Semantic
     os.path.join(THIS_DIR, 'static'),
     os.path.join(APP_HOME_DIR, 'static'),
     os.path.join(APP_PORTFOLIO_DIR, 'static')
