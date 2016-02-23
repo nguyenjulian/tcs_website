@@ -1,4 +1,7 @@
-from django.shortcuts import render, get_list_or_404
+from django.shortcuts import render, redirect
+
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout as auth_logout, login
 
 from apps.portfolio.models import Tag, TagCategory, Project
 
